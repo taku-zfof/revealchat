@@ -4,15 +4,11 @@ Rails.application.routes.draw do
     sessions: "user/sessions"
   }
   
-   namespace :user do
-    root to: "homes#top"
-    resources :informations, only: [:show, :edit, :update]
-   end
-  
-   namespace :group do
-    resources :rooms, only: [:show, :edit, :update]
-   end
-   
-   resources :messages, only: [:create, :destroy, :show, :edit, :update]
+  root to: "homes#top"
+  resources :users, only: [:edit, :update]
+  resources :groups, only: [:new, :create, :show, :edit, :update, :destroy] do
+    get "join" => "groups#join"  
+  end
+  resources :messages, only: [:create, :destroy, :show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
