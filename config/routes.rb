@@ -9,5 +9,16 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: "user/sessions"
   }
+  
+   namespace :user do
+    root to: "homes#top"
+    resources :informations, only: [:show, :edit, :update]
+   end
+  
+   namespace :group do
+    resources :rooms, only: [:show, :edit, :update]
+   end
+   
+   resources :messages, only: [:create, :destroy, :show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
