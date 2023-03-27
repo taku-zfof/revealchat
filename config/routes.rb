@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :groups, controllers:{
-    registrations: "group/registrations",
-    sessions: "group/registrations"
-  }
-  
-  
   devise_for :users, controllers:{
     registrations: "user/registrations",
     sessions: "user/sessions"
